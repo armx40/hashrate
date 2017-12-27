@@ -8,7 +8,7 @@
 
 int count = 0;
 char cmp_hash[32];
-int time_sec = 30;
+int time_sec = 1;
 
 int main_hash()
 {
@@ -48,14 +48,20 @@ int main()
 {
     char *buffer = "hello";
     gcry_md_hash_buffer(GCRY_MD_SHA256, cmp_hash, buffer, 5);
-    pthread_t tid1, tid2, tid3; //,tid4;
+    pthread_t tid1;//, tid2, tid3, tid4, tid5, tid6, tid7;
     pthread_create(&tid1, NULL, hash_cal, NULL);
-    pthread_create(&tid2, NULL, hash_cal, NULL);
-    pthread_create(&tid3, NULL, hash_cal, NULL);
-    //pthread_create(&tid4,NULL,hash_cal,NULL);
+    pthread_create(&tid1, NULL, hash_cal, NULL);
+    pthread_create(&tid1, NULL, hash_cal, NULL);
+    pthread_create(&tid1, NULL, hash_cal, NULL);
+    pthread_create(&tid1, NULL, hash_cal, NULL);
+    pthread_create(&tid1, NULL, hash_cal, NULL);
+    pthread_create(&tid1, NULL, hash_cal, NULL);
     pthread_join(tid1, NULL);
-    pthread_join(tid2, NULL);
-    pthread_join(tid3, NULL);
-    //pthread_join(tid4,NULL);
+    pthread_join(tid1, NULL);
+    pthread_join(tid1, NULL);
+    pthread_join(tid1,NULL);
+    pthread_join(tid1, NULL);
+    pthread_join(tid1, NULL);
+    pthread_join(tid1, NULL);
     printf("Hashrate: %d Hashes in %ds\n", count,time_sec);
 }
